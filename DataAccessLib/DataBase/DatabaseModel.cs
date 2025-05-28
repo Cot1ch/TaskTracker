@@ -10,6 +10,7 @@ namespace DataAccessLib.DataBase
         {
             using (var db = new AppDbContext())
             {
+
                 if (!db.Database.EnsureCreated())
                 {
                     db.Database.EnsureCreated();
@@ -24,19 +25,34 @@ namespace DataAccessLib.DataBase
                       where task.Id == taska.Id
                       select task).Any())
                 {
-                    db.Add(taska);
-                    db.SaveChanges();
+                    db.Entry(taska.Executor).State = EntityState.Unchanged;
+                    db.Tasks.Add(taska);
+                    await db.SaveChangesAsync();
                 }
                 else
                 {
                     var task = db.Tasks.First(t => t.Id == taska.Id);
 
+
+                    db.Entry(taska.Executor).State = EntityState.Unchanged;
                     db.Tasks.Remove(task);
                     db.Tasks.Add(taska);
                     await db.SaveChangesAsync();
                 }
             }
-
+        }
+        async public void Add(Executor executor)
+        {
+            using (var db = new AppDbContext())
+            {
+                if (!(from execut in db.Executors
+                      where execut.Id == executor.Id
+                      select execut).Any())
+                {
+                    db.Executors.Add(executor);
+                    await db.SaveChangesAsync();
+                }
+            }
         }
         async public void Delete(Taska taska)
         {
@@ -46,7 +62,20 @@ namespace DataAccessLib.DataBase
                      where task.Id == taska.Id
                      select task).Any())
                 {
-                    db.Remove(taska);
+                    db.Tasks.Remove(taska);
+                    await db.SaveChangesAsync();
+                }
+            }
+        }
+        async public void Delete(Executor executor)
+        {
+            using (var db = new AppDbContext())
+            {
+                if ((from execut in db.Executors
+                     where execut.Id == executor.Id
+                     select execut).Any())
+                {
+                    db.Executors.Remove(executor);
                     await db.SaveChangesAsync();
                 }
             }

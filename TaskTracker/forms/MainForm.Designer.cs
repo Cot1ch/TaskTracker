@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dgvTasks = new System.Windows.Forms.DataGridView();
-            btnAddTask = new System.Windows.Forms.Button();
-            btnDeleteTask = new System.Windows.Forms.Button();
-            lblTasks = new System.Windows.Forms.Label();
+            dgvTasks = new DataGridView();
+            btnAddTask = new Button();
+            btnDeleteTask = new Button();
+            lblTasks = new Label();
+            btnExecutorsList = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvTasks).BeginInit();
             SuspendLayout();
             // 
@@ -41,22 +42,22 @@
             dgvTasks.AllowUserToDeleteRows = false;
             dgvTasks.AllowUserToResizeColumns = false;
             dgvTasks.AllowUserToResizeRows = false;
-            dgvTasks.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right));
-            dgvTasks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dgvTasks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvTasks.Location = new System.Drawing.Point(12, 68);
+            dgvTasks.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvTasks.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvTasks.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvTasks.Location = new Point(12, 68);
             dgvTasks.Name = "dgvTasks";
             dgvTasks.RowHeadersWidth = 51;
-            dgvTasks.Size = new System.Drawing.Size(597, 373);
+            dgvTasks.Size = new Size(597, 373);
             dgvTasks.TabIndex = 0;
             dgvTasks.DoubleClick += dgvTasks_DoubleClick;
             // 
             // btnAddTask
             // 
-            btnAddTask.Anchor = ((System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right));
-            btnAddTask.Location = new System.Drawing.Point(620, 12);
+            btnAddTask.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnAddTask.Location = new Point(620, 12);
             btnAddTask.Name = "btnAddTask";
-            btnAddTask.Size = new System.Drawing.Size(150, 50);
+            btnAddTask.Size = new Size(150, 50);
             btnAddTask.TabIndex = 1;
             btnAddTask.Text = "Добавить задачу";
             btnAddTask.UseVisualStyleBackColor = true;
@@ -64,10 +65,10 @@
             // 
             // btnDeleteTask
             // 
-            btnDeleteTask.Anchor = ((System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right));
-            btnDeleteTask.Location = new System.Drawing.Point(620, 68);
+            btnDeleteTask.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnDeleteTask.Location = new Point(620, 68);
             btnDeleteTask.Name = "btnDeleteTask";
-            btnDeleteTask.Size = new System.Drawing.Size(150, 50);
+            btnDeleteTask.Size = new Size(150, 50);
             btnDeleteTask.TabIndex = 2;
             btnDeleteTask.Text = "Удалить задачу";
             btnDeleteTask.UseVisualStyleBackColor = true;
@@ -76,22 +77,35 @@
             // lblTasks
             // 
             lblTasks.AutoSize = true;
-            lblTasks.Location = new System.Drawing.Point(12, 27);
+            lblTasks.Location = new Point(12, 27);
             lblTasks.Name = "lblTasks";
-            lblTasks.Size = new System.Drawing.Size(92, 20);
+            lblTasks.Size = new Size(92, 20);
             lblTasks.TabIndex = 3;
             lblTasks.Text = "Мои задачи";
             // 
+            // btnExecotorsList
+            // 
+            btnExecutorsList.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnExecutorsList.Location = new Point(620, 124);
+            btnExecutorsList.Name = "btnExecotorsList";
+            btnExecutorsList.Size = new Size(150, 50);
+            btnExecutorsList.TabIndex = 4;
+            btnExecutorsList.Text = "Исполнители";
+            btnExecutorsList.UseVisualStyleBackColor = true;
+            btnExecutorsList.Click += this.btnExecutorsList_Click;
+            // 
             // MainForm
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(782, 453);
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(782, 453);
+            Controls.Add(btnExecutorsList);
             Controls.Add(lblTasks);
             Controls.Add(btnDeleteTask);
             Controls.Add(btnAddTask);
             Controls.Add(dgvTasks);
-            MinimumSize = new System.Drawing.Size(800, 500);
+            MinimumSize = new Size(800, 500);
+            Name = "MainForm";
             Text = "Мои задачи";
             Load += MainForm_Load;
             ((System.ComponentModel.ISupportInitialize)dgvTasks).EndInit();
@@ -105,5 +119,6 @@
         private Button btnAddTask;
         private Button btnDeleteTask;
         private Label lblTasks;
+        private Button btnExecutorsList;
     }
 }

@@ -87,6 +87,7 @@
             // comboBoxExecutor
             // 
             comboBoxExecutor.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            comboBoxExecutor.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxExecutor.ForeColor = SystemColors.WindowText;
             comboBoxExecutor.FormattingEnabled = true;
             comboBoxExecutor.Location = new Point(119, 189);
@@ -97,7 +98,9 @@
             // comboBoxPriority
             // 
             comboBoxPriority.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            comboBoxPriority.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxPriority.FormattingEnabled = true;
+            comboBoxPriority.Items.AddRange(new object[] { "Высокий", "Средний", "Низкий" });
             comboBoxPriority.Location = new Point(119, 223);
             comboBoxPriority.Name = "comboBoxPriority";
             comboBoxPriority.Size = new Size(351, 28);

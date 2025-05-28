@@ -9,11 +9,17 @@ namespace TaskTracker
     {
         private Taska? _taska;
         private readonly MainForm _mainform;
-        public InfoTaskForm(Taska task, MainForm mainForm)
+        private readonly IDataBase _dataBase;
+        public InfoTaskForm(Taska task, MainForm mainForm, IDataBase dataBase)
         {
             InitializeComponent();
             this._taska = task;
             this._mainform = mainForm;
+            this._dataBase = dataBase;
+            foreach (var executor in _dataBase.GetExecutors())
+            {
+                this.comboBoxExecutor.Items.Add(executor.Name);
+            }
         }
         private void AddTaskForm_Load(object sender, EventArgs e)
         {
@@ -23,7 +29,8 @@ namespace TaskTracker
                 this.buttonSave.Text = "Сохранить";
                 this.textBoxName.Text = _taska.Title;
                 this.textBoxDescription.Text = _taska.Description;
-                // this.comboBoxExecutor.Text = _taska.Executor.Name;
+                this.comboBoxExecutor.Text = _dataBase.GetExecutors()
+                    .First(executor => executor.Id == _taska.ExecutorId).Name;
                 this.comboBoxPriority.Text = _taska.Priority;
                 this.checkBoxStatus.Checked = _taska.Status;
             }
@@ -41,10 +48,8 @@ namespace TaskTracker
             }
             _taska.Title = this.textBoxName.Text;
             _taska.Description = this.textBoxDescription.Text;
-            _taska.Executor = new Executor()
-            {
-                Name = this.comboBoxExecutor.Text
-            };
+            _taska.Executor = _dataBase.GetExecutors()
+                .First(executor => executor.Name == this.comboBoxExecutor.Text);
             _taska.Priority = this.comboBoxPriority.Text;
             _taska.Status = this.checkBoxStatus.Checked;
 

@@ -1,6 +1,7 @@
 using DataAccessLib.classes;
 using DataAccessLib.DataBase;
 using Microsoft.Extensions.DependencyInjection;
+using TaskTracker.forms;
 
 namespace TaskTracker
 {
@@ -13,7 +14,7 @@ namespace TaskTracker
         }
         public void LoadDgv()
         {
-            var services = new ServiceCollection().AddTransient<IDataBase, DatabaseModel>();
+            var services = new ServiceCollection().AddSingleton<IDataBase, DatabaseModel>();
 
             var serviceProvider = services.BuildServiceProvider();
             _database = serviceProvider.GetService<IDataBase>();
@@ -22,17 +23,19 @@ namespace TaskTracker
                 select new
                 {
                     task.Id,
-                    task.Title,
-                    task.Executor.Name,
-                    task.Priority
+                    Статус = task.Status ? "Выполнена" : "В работе",
+                    Название = task.Title,
+                    Исполнитель = task.Executor.Name,
+                    Приоритет = task.Priority
                 }).ToList();
 
 
             this.dgvTasks.DataSource = tasks;
+            this.dgvTasks.Columns[0].Visible = false;
         }
         private void btnAddTask_Click(object sender, EventArgs e)
         {
-            new InfoTaskForm(null, this).Show();
+            new InfoTaskForm(null, this, _database).Show();
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -65,7 +68,11 @@ namespace TaskTracker
             Taska updateTask = _database.GetTasks()
                 .First(task => task.Id == (Guid)dgvTasks.CurrentRow.Cells[0].Value);
 
-            new InfoTaskForm(updateTask, this).Show();
+            new InfoTaskForm(updateTask, this, _database).Show();
+        }
+        private void btnExecutorsList_Click(object sender, EventArgs e)
+        {
+            new ExecutorsList().Show();
         }
     }
 }
