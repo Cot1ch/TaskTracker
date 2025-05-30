@@ -66,7 +66,6 @@ namespace TaskTracker
                 _mainform.LoadDgv();
                 this.Close();
             }
-
         }
 
         private bool TryValidate(Taska taska)

@@ -8,7 +8,7 @@ namespace DataAccessLib.DataBase
     {
         public DatabaseModel()
         {
-            using (var db = new AppDbContext())
+            using (var db = new AppDbContextSQLite())
             {
 
                 if (!db.Database.EnsureCreated())
@@ -19,10 +19,12 @@ namespace DataAccessLib.DataBase
         }
         async public void Add(Taska taska)
         {
-            using (var db = new AppDbContext())
+            using (var db = new AppDbContextSQLite())
             {
                 if (!(from task in db.Tasks
                       where task.Id == taska.Id
+                      && task.Title == taska.Title
+                      && task.Executor == taska.Executor
                       select task).Any())
                 {
                     db.Entry(taska.Executor).State = EntityState.Unchanged;
@@ -33,7 +35,6 @@ namespace DataAccessLib.DataBase
                 {
                     var task = db.Tasks.First(t => t.Id == taska.Id);
 
-
                     db.Entry(taska.Executor).State = EntityState.Unchanged;
                     db.Tasks.Remove(task);
                     db.Tasks.Add(taska);
@@ -43,7 +44,7 @@ namespace DataAccessLib.DataBase
         }
         async public void Add(Executor executor)
         {
-            using (var db = new AppDbContext())
+            using (var db = new AppDbContextSQLite())
             {
                 if (!(from execut in db.Executors
                       where execut.Id == executor.Id
@@ -56,7 +57,7 @@ namespace DataAccessLib.DataBase
         }
         async public void Delete(Taska taska)
         {
-            using (var db = new AppDbContext())
+            using (var db = new AppDbContextSQLite())
             {
                 if ((from task in db.Tasks
                      where task.Id == taska.Id
@@ -69,7 +70,7 @@ namespace DataAccessLib.DataBase
         }
         async public void Delete(Executor executor)
         {
-            using (var db = new AppDbContext())
+            using (var db = new AppDbContextSQLite())
             {
                 if ((from execut in db.Executors
                      where execut.Id == executor.Id
@@ -82,11 +83,11 @@ namespace DataAccessLib.DataBase
         }
         public DbSet<Taska> GetTasks()
         {
-            return new AppDbContext().Tasks;
+            return new AppDbContextSQLite().Tasks;
         }
         public DbSet<Executor> GetExecutors()
         {
-            return new AppDbContext().Executors;
+            return new AppDbContextSQLite().Executors;
         }
     }
 }

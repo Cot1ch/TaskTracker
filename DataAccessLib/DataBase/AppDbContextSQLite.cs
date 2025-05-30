@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataAccessLib.DataBase
 {
-    public class AppDbContext : DbContext
+    public class AppDbContextSQLite : DbContext
     {
         public DbSet<Executor> Executors { get; set; }
         public DbSet<Taska> Tasks { get; set; }

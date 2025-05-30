@@ -32,10 +32,23 @@ namespace TaskTracker
 
             this.dgvTasks.DataSource = tasks;
             this.dgvTasks.Columns[0].Visible = false;
+            this.dgvTasks.RowHeadersVisible = false;
         }
         private void btnAddTask_Click(object sender, EventArgs e)
         {
-            new InfoTaskForm(null, this, _database).Show();
+            var isCont = false;
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form.GetType() == typeof(InfoTaskForm))
+                {
+                    form.BringToFront();
+                    isCont = true;
+                }
+            }
+            if (!isCont)
+            {
+                new InfoTaskForm(null, this, _database).Show();
+            }
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -72,7 +85,19 @@ namespace TaskTracker
         }
         private void btnExecutorsList_Click(object sender, EventArgs e)
         {
-            new ExecutorsList().Show();
+            var isCont = false; 
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form.GetType() == typeof(ExecutorsList))
+                {
+                    form.BringToFront();
+                    isCont = true;
+                }
+            }
+            if (!isCont)
+            {
+                new ExecutorsList().Show();
+            }
         }
     }
 }

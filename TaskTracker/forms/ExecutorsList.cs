@@ -1,6 +1,7 @@
 ﻿using DataAccessLib.classes;
 using DataAccessLib.DataBase;
 using Microsoft.Extensions.DependencyInjection;
+using System.ComponentModel.DataAnnotations;
 
 namespace TaskTracker.forms
 {
@@ -45,8 +46,12 @@ namespace TaskTracker.forms
             {
                 Name = this.textBoxNewName.Text
             };
-            _database.Add(executor);
-            LoadListBox();
+            if (TryValidate(executor))
+            {
+                _database.Add(executor);
+                MessageBox.Show("Добавлено");
+                LoadListBox();
+            }
         }
 
         private void btnDeleteExecutor_Click(object sender, EventArgs e)
@@ -59,6 +64,21 @@ namespace TaskTracker.forms
             _database.Delete(deletedExecutor);
             MessageBox.Show("Удалено");
             LoadListBox();
+        }
+
+        private bool TryValidate(Executor executor)
+        {
+            var context = new ValidationContext(executor);
+            var results = new List<ValidationResult>();
+            if (!Validator.TryValidateObject(executor, context, results, true))
+            {
+                foreach (var error in results)
+                {
+                    MessageBox.Show(error.ErrorMessage);
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }
