@@ -42,6 +42,7 @@ namespace TaskTracker.forms
                 MessageBox.Show("Исполнитель уже добавлен");
                 return;
             }
+
             var executor = new Executor()
             {
                 Name = this.textBoxNewName.Text
