@@ -11,6 +11,8 @@ namespace DataAccessLib.classes
         public string? Title { get; set; }
         public string? Description { get; set; }
         [Required]
+        public DateTime DeadLine { get; set; }
+        [Required]
         public string? Priority { get; set; }
         [Required]
         public Executor Executor { get; set; }

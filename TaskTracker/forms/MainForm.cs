@@ -23,10 +23,11 @@ namespace TaskTracker
                 select new
                 {
                     task.Id,
-                    Статус = task.Status ? "Выполнена" : "В работе",
-                    Название = task.Title,
-                    Исполнитель = task.Executor.Name,
-                    Приоритет = task.Priority
+                    РЎС‚Р°С‚СѓСЃ = task.Status ? "Р’С‹РїРѕР»РЅРµРЅР°" : "Р’ СЂР°Р±РѕС‚Рµ",
+                    РќР°Р·РІР°РЅРёРµ = task.Title,
+                    РСЃРїРѕР»РЅРёС‚РµР»СЊ = task.Executor.Name,
+                    Р”РµРґР»Р°Р№РЅ = task.DeadLine.ToShortDateString(),
+                    РџСЂРёРѕСЂРёС‚РµС‚ = task.Priority
                 }).ToList();
 
 
@@ -59,7 +60,7 @@ namespace TaskTracker
         {
             if (dgvTasks.Rows.Count == 0)
             {
-                MessageBox.Show("Сначала добавьте задачу");
+                MessageBox.Show("РЎРЅР°С‡Р°Р»Р° РґРѕР±Р°СЊС‚Рµ Р·Р°РґР°С‡Рё");
                 return;
             }
 
@@ -67,7 +68,7 @@ namespace TaskTracker
                 .First(task => task.Id == (Guid)dgvTasks.CurrentRow.Cells[0].Value);
 
             _database.Delete(deletedTask);
-            MessageBox.Show("Удалено");
+            MessageBox.Show("РЈРґР°Р»РµРЅРѕ");
             LoadDgv();
         }
 
@@ -75,7 +76,7 @@ namespace TaskTracker
         {
             if (dgvTasks.Rows.Count == 0)
             {
-                MessageBox.Show("Сначала добавьте задачу");
+                MessageBox.Show("РЎРЅР°С‡Р°Р»Р° РґРѕР±Р°СЊС‚Рµ Р·Р°РґР°С‡Рё");
                 return;
             }
             Taska updateTask = _database.GetTasks()

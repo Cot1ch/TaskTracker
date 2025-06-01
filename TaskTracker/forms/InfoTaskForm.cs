@@ -31,6 +31,7 @@ namespace TaskTracker
                 this.textBoxDescription.Text = _taska.Description;
                 this.comboBoxExecutor.Text = _dataBase.GetExecutors()
                     .First(executor => executor.Id == _taska.ExecutorId).Name;
+                this.dateTimePicker.Value = _taska.DeadLine;
                 this.comboBoxPriority.Text = _taska.Priority;
                 this.checkBoxStatus.Checked = _taska.Status;
             }
@@ -50,6 +51,7 @@ namespace TaskTracker
             _taska.Description = this.textBoxDescription.Text;
             _taska.Executor = _dataBase.GetExecutors()
                 .First(executor => executor.Name == this.comboBoxExecutor.Text);
+            _taska.DeadLine = this.dateTimePicker.Value;
             _taska.Priority = this.comboBoxPriority.Text;
             _taska.Status = this.checkBoxStatus.Checked;
 

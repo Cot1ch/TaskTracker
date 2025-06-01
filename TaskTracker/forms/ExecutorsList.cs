@@ -51,6 +51,7 @@ namespace TaskTracker.forms
             {
                 _database.Add(executor);
                 MessageBox.Show("Добавлено");
+                this.textBoxNewName.Text = string.Empty;
                 LoadListBox();
             }
         }

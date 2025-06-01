@@ -38,6 +38,8 @@
             label4 = new Label();
             buttonSave = new Button();
             checkBoxStatus = new CheckBox();
+            lblDeadline = new Label();
+            dateTimePicker = new DateTimePicker();
             SuspendLayout();
             // 
             // labelName
@@ -73,7 +75,7 @@
             textBoxDescription.Location = new Point(119, 48);
             textBoxDescription.Multiline = true;
             textBoxDescription.Name = "textBoxDescription";
-            textBoxDescription.Size = new Size(351, 135);
+            textBoxDescription.Size = new Size(351, 131);
             textBoxDescription.TabIndex = 3;
             // 
             // label2
@@ -92,7 +94,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
             label3.ForeColor = Color.FromArgb(154, 188, 224);
-            label3.Location = new Point(12, 192);
+            label3.Location = new Point(12, 188);
             label3.Name = "label3";
             label3.Size = new Size(105, 20);
             label3.TabIndex = 4;
@@ -106,7 +108,7 @@
             comboBoxExecutor.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
             comboBoxExecutor.ForeColor = Color.FromArgb(3, 30, 54);
             comboBoxExecutor.FormattingEnabled = true;
-            comboBoxExecutor.Location = new Point(119, 189);
+            comboBoxExecutor.Location = new Point(119, 185);
             comboBoxExecutor.Name = "comboBoxExecutor";
             comboBoxExecutor.Size = new Size(351, 28);
             comboBoxExecutor.TabIndex = 5;
@@ -120,7 +122,7 @@
             comboBoxPriority.ForeColor = Color.FromArgb(3, 30, 54);
             comboBoxPriority.FormattingEnabled = true;
             comboBoxPriority.Items.AddRange(new object[] { "Высокий", "Средний", "Низкий" });
-            comboBoxPriority.Location = new Point(119, 223);
+            comboBoxPriority.Location = new Point(119, 219);
             comboBoxPriority.Name = "comboBoxPriority";
             comboBoxPriority.Size = new Size(351, 28);
             comboBoxPriority.TabIndex = 7;
@@ -130,7 +132,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
             label4.ForeColor = Color.FromArgb(154, 188, 224);
-            label4.Location = new Point(12, 226);
+            label4.Location = new Point(12, 222);
             label4.Name = "label4";
             label4.Size = new Size(87, 20);
             label4.TabIndex = 6;
@@ -165,12 +167,41 @@
             checkBoxStatus.Text = "Выполнена";
             checkBoxStatus.UseVisualStyleBackColor = false;
             // 
+            // lblDeadline
+            // 
+            lblDeadline.AutoSize = true;
+            lblDeadline.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            lblDeadline.ForeColor = Color.FromArgb(154, 188, 224);
+            lblDeadline.Location = new Point(12, 258);
+            lblDeadline.Name = "lblDeadline";
+            lblDeadline.Size = new Size(73, 20);
+            lblDeadline.TabIndex = 10;
+            lblDeadline.Text = "Дедлайн";
+            // 
+            // dateTimePicker
+            // 
+            dateTimePicker.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dateTimePicker.CalendarFont = new Font("Segoe UI", 9F, FontStyle.Bold);
+            dateTimePicker.CalendarForeColor = Color.FromArgb(3, 30, 54);
+            dateTimePicker.CalendarMonthBackground = Color.FromArgb(154, 188, 224);
+            dateTimePicker.CalendarTitleBackColor = Color.FromArgb(154, 188, 224);
+            dateTimePicker.CalendarTitleForeColor = Color.FromArgb(3, 30, 54);
+            dateTimePicker.CalendarTrailingForeColor = Color.FromArgb(3, 30, 54);
+            dateTimePicker.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            dateTimePicker.ImeMode = ImeMode.Off;
+            dateTimePicker.Location = new Point(119, 253);
+            dateTimePicker.Name = "dateTimePicker";
+            dateTimePicker.Size = new Size(351, 27);
+            dateTimePicker.TabIndex = 11;
+            // 
             // InfoTaskForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(3, 30, 54);
             ClientSize = new Size(482, 353);
+            Controls.Add(dateTimePicker);
+            Controls.Add(lblDeadline);
             Controls.Add(checkBoxStatus);
             Controls.Add(buttonSave);
             Controls.Add(comboBoxPriority);
@@ -188,17 +219,20 @@
             PerformLayout();
         }
 
+        private System.Windows.Forms.Label lblDeadline;
+
         #endregion
 
         private Label labelName;
         private TextBox textBoxName;
-        private TextBox textBoxDescription;
+        private System.Windows.Forms.TextBox textBoxDescription;
         private Label label2;
-        private Label label3;
-        private ComboBox comboBoxExecutor;
-        private ComboBox comboBoxPriority;
-        private Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox comboBoxExecutor;
+        private System.Windows.Forms.ComboBox comboBoxPriority;
+        private System.Windows.Forms.Label label4;
         private Button buttonSave;
         private CheckBox checkBoxStatus;
+        private DateTimePicker dateTimePicker;
     }
 }

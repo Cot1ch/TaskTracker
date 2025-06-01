@@ -10,7 +10,6 @@ namespace DataAccessLib.DataBase
         {
             using (var db = new AppDbContextSQLite())
             {
-
                 if (!db.Database.EnsureCreated())
                 {
                     db.Database.EnsureCreated();
