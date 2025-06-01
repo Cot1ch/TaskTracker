@@ -31,11 +31,11 @@
             labelName = new Label();
             textBoxName = new TextBox();
             textBoxDescription = new TextBox();
-            label2 = new Label();
-            label3 = new Label();
+            lblDescription = new Label();
+            lblExecutor = new Label();
             comboBoxExecutor = new ComboBox();
             comboBoxPriority = new ComboBox();
-            label4 = new Label();
+            lblPriority = new Label();
             buttonSave = new Button();
             checkBoxStatus = new CheckBox();
             lblDeadline = new Label();
@@ -78,27 +78,28 @@
             textBoxDescription.Size = new Size(351, 131);
             textBoxDescription.TabIndex = 3;
             // 
-            // label2
+            // lblDescription
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label2.ForeColor = Color.FromArgb(154, 188, 224);
-            label2.Location = new Point(12, 48);
-            label2.Name = "label2";
-            label2.Size = new Size(79, 20);
-            label2.TabIndex = 2;
-            label2.Text = "Описание";
+            lblDescription.AutoSize = true;
+            lblDescription.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            lblDescription.ForeColor = Color.FromArgb(154, 188, 224);
+            lblDescription.Location = new Point(12, 48);
+            lblDescription.Name = "lblDescription";
+            lblDescription.Size = new Size(79, 20);
+            lblDescription.TabIndex = 2;
+            lblDescription.Text = "Описание";
             // 
-            // label3
+            // lblExecutor
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label3.ForeColor = Color.FromArgb(154, 188, 224);
-            label3.Location = new Point(12, 188);
-            label3.Name = "label3";
-            label3.Size = new Size(105, 20);
-            label3.TabIndex = 4;
-            label3.Text = "Исполнитель";
+            lblExecutor.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            lblExecutor.AutoSize = true;
+            lblExecutor.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            lblExecutor.ForeColor = Color.FromArgb(154, 188, 224);
+            lblExecutor.Location = new Point(12, 188);
+            lblExecutor.Name = "lblExecutor";
+            lblExecutor.Size = new Size(105, 20);
+            lblExecutor.TabIndex = 4;
+            lblExecutor.Text = "Исполнитель";
             // 
             // comboBoxExecutor
             // 
@@ -127,16 +128,17 @@
             comboBoxPriority.Size = new Size(351, 28);
             comboBoxPriority.TabIndex = 7;
             // 
-            // label4
+            // lblPriority
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label4.ForeColor = Color.FromArgb(154, 188, 224);
-            label4.Location = new Point(12, 222);
-            label4.Name = "label4";
-            label4.Size = new Size(87, 20);
-            label4.TabIndex = 6;
-            label4.Text = "Приоритет";
+            lblPriority.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            lblPriority.AutoSize = true;
+            lblPriority.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            lblPriority.ForeColor = Color.FromArgb(154, 188, 224);
+            lblPriority.Location = new Point(12, 222);
+            lblPriority.Name = "lblPriority";
+            lblPriority.Size = new Size(87, 20);
+            lblPriority.TabIndex = 6;
+            lblPriority.Text = "Приоритет";
             // 
             // buttonSave
             // 
@@ -156,6 +158,7 @@
             // 
             // checkBoxStatus
             // 
+            checkBoxStatus.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             checkBoxStatus.AutoSize = true;
             checkBoxStatus.BackColor = Color.FromArgb(3, 30, 54);
             checkBoxStatus.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
@@ -169,6 +172,7 @@
             // 
             // lblDeadline
             // 
+            lblDeadline.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             lblDeadline.AutoSize = true;
             lblDeadline.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
             lblDeadline.ForeColor = Color.FromArgb(154, 188, 224);
@@ -205,13 +209,14 @@
             Controls.Add(checkBoxStatus);
             Controls.Add(buttonSave);
             Controls.Add(comboBoxPriority);
-            Controls.Add(label4);
+            Controls.Add(lblPriority);
             Controls.Add(comboBoxExecutor);
-            Controls.Add(label3);
+            Controls.Add(lblExecutor);
             Controls.Add(textBoxDescription);
-            Controls.Add(label2);
+            Controls.Add(lblDescription);
             Controls.Add(textBoxName);
             Controls.Add(labelName);
+            MinimumSize = new Size(500, 400);
             Name = "InfoTaskForm";
             Text = "Задача";
             Load += AddTaskForm_Load;
@@ -226,11 +231,11 @@
         private Label labelName;
         private TextBox textBoxName;
         private System.Windows.Forms.TextBox textBoxDescription;
-        private Label label2;
-        private System.Windows.Forms.Label label3;
+        private Label lblDescription;
+        private System.Windows.Forms.Label lblExecutor;
         private System.Windows.Forms.ComboBox comboBoxExecutor;
         private System.Windows.Forms.ComboBox comboBoxPriority;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblPriority;
         private Button buttonSave;
         private CheckBox checkBoxStatus;
         private DateTimePicker dateTimePicker;
